@@ -10,7 +10,7 @@ public class MinecraftClientMixin {
     @Redirect(method = "render(Z)V", at = @At(value = "INVOKE", target = "java/lang/Thread.yield ()V"))
     private void removeThreadYield() {
         //Remove yield() only for sodium as it has the "Wait for GPU" system
-        if(!FabricLoader.getInstance().isModLoaded("sodium")){
+        if(!FabricLoader.getInstance().isModLoaded()){
             Thread.yield();
         }
     }
