@@ -11,8 +11,8 @@ public class MinecraftClientMixin {
     private void removeThreadYield() {
         //Remove yield() only for the mod that uses the "Wait for GPU" system
         String modName = "VulkanMod"; // Replace this with the name of the mod you want to check
-        if (FabricLoader.getInstance().isModLoaded(VulkanMod)) {
-            Thread.yield();
+        if (FabricLoader.getInstance().isModLoaded("VulkanMod")) {
+    Thread.yield();
         }
     }
 }
