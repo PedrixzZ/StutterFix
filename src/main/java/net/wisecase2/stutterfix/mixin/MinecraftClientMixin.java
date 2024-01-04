@@ -9,10 +9,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class MinecraftClientMixin {
     @Redirect(method = "render(Z)V", at = @At(value = "INVOKE", target = "java/lang/Thread.yield ()V"))
     private void removeThreadYield() {
-        //Remove yield() only for sodium as it has the "Wait for GPU" system
-        if(!FabricLoader.getInstance().isModLoaded()){
+        //Remove yield() only for the mod that uses the "Wait for GPU" system
+        String modName = "VulkanMod"; // Replace this with the name of the mod you want to check
+        if (FabricLoader.getInstance().isModLoaded(VulkanMod)) {
             Thread.yield();
         }
     }
-
 }
